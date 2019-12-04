@@ -1,0 +1,10 @@
+{
+  "short_name": "Three Little Pigs",
+  "name": "Modes, Templates, and Links - Three Little Pigs: A Tale of Code Re-use",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

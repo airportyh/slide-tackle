@@ -1,0 +1,72 @@
+presentation: "Your Presentation Title"
+slides:
+    -
+        image: "![SlideTackle](images/SlideTackle.png)"
+        narration: |-
+            Hey! You are using SlideTackle! A tool for building visual-oriented
+            blog posts.
+
+            Find the file `public/slides.yml` in your `slide-tackle` folder
+            or whatever you named it, and you are ready to start writing your
+            slides using SlideTackle!
+
+            (Scroll down)
+    -
+        image: "![Slide 2](images/Slide-2.png)"
+        narration: |-
+            Look, here is another slide! Easy, right?
+            Go to the next one to see how it's done.
+    -
+        image: "![Yaml Format](images/Yaml-Format.png)"
+        narration: |-
+            Slides in SlideTackle are written in YAML, which is an indentation-based
+            cousin of JSON.
+    -
+        image: "![Indentation Significance](images/Indentation-Significance.png)"
+        narration: |-
+            The indentation within the file is significant, and gives it its structure.
+    -
+        image: "![Change Title](images/Change-Title.png)"
+        narration: |-
+            The first thing you want to do after you open this file, is probably
+            to change the title of your presentation.
+    -
+        image: "![Change Slides](images/Change-Slides.png)"
+        narration: |-
+            The next thing you'd want to do is to change the slides within
+            your presentation.
+    -
+        image: "![Array items](images/Array-items.png)"
+        narration: |-
+            Each of these dashes begins an array item within the *slides* array.
+    -
+        image: "![A slide object](images/A-slide-object.png)"
+        narration: |-
+            And indented within each dash mark is a slide object, each contain
+            the two properties: *image*, and *narration*.
+    -
+        image: "![Markdown image](images/Markdown-image.png)"
+        narration: |-
+            The image property should contain an image in Markdown's image
+            format. Which is `![Alt text of the image](Url of the image)`.
+
+            To link an image, you'll either need to copy the image you want to
+            use to the `public/images` folder, and then link to it via
+            a relative URL: `images/your-image-file.png`, or link to
+            an image that is externally hosted.
+    -
+        image: "![Narration and Block Text](images/Narration-and-Block-Text.png)"
+        narration: |-
+            The narration property should contain the narration text to
+            accompany the image. This `|-` notation here tells YAML that
+            the text that come indented after this line is block text.
+    -
+        image: "![Narrate in Markdown](images/Narrate-in-Markdown.png)"
+        narration: |-
+            The format of the narration supports Markdown format, so you
+            can use all of the various formatting options that Markdown
+            gives you.
+    -
+        image: "![Happy SlideTackling](images/Happy-SlideTackling.png)"
+        narration: |-
+            That's it, I hope you enjoy using SlideTackle!
