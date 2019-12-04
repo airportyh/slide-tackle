@@ -1,7 +1,6 @@
 # SlideTackle
 
-SlideTackle is a slide-based blog format, used for writers to write
-more visual oriented blog articles.
+SlideTackle is a tool for writers to write in a visual-oriented blog format.
 
 ## Todo
 
