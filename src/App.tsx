@@ -28,7 +28,7 @@ const App: React.FC = () => {
       return <div
         className="loading-background"
         style={{
-          height: '1000000000px'
+          height: '100vh'
         }}>
         <img
           alt="loading"
