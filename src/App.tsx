@@ -8,10 +8,16 @@ import { StandAloneSlideView } from "./StandAloneSlideView";
 import { getCurrentSlideIdx } from "./render-helpers";
 import { useInitializeRouting } from './useInitializeRouting';
 
+export interface AppOptions {
+  widthRatio: [number, number]
+}
+
 const App: React.FC = () => {
   const scrollTop = useScrollTop();
   const viewportDimensions = useViewportDimenions();
-  const slides = useSlideViewModels();
+  const slideModelState = useSlideViewModels();
+  const slides = slideModelState.viewModels;
+  const options = slideModelState.appOptions;
   const initialized = useInitializeRouting(viewportDimensions, slides);
 
   if (slides.length === 0) {
@@ -38,6 +44,7 @@ const App: React.FC = () => {
           currentIdx={currentSlideIdx}
           scrollTop={internalScrollTop}
           viewportDimensions={viewportDimensions}
+          options={options}
         />);
     } else if (slide.type === "sequence") {
       content.push(
@@ -48,6 +55,7 @@ const App: React.FC = () => {
           currentIdx={currentSlideIdx}
           scrollTop={internalScrollTop}
           viewportDimensions={viewportDimensions}
+          options={options}
         />);
     } else {
       throw new Error("Unknown slide type: " + slide["type"]);

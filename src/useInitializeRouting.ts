@@ -24,6 +24,6 @@ export function useInitializeRouting(viewportDimensions: Dimensions, slides: Sli
          window.scrollTo(0, heightOffset);
          setInitialized(true);
      }
-   }, [slides]);
+   }, [slides, initialized]);
    return initialized;
 }

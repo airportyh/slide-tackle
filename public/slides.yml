@@ -1,4 +1,5 @@
 presentation: "Your Presentation Title"
+width_ratio: [50, 50]
 slides:
     -
         image: "![SlideTackle](images/SlideTackle.png)"

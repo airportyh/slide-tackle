@@ -1,11 +1,33 @@
 import React from "react";
 import { SlideViewModel, StandAloneSlideViewModel } from "./slide-view-model-types";
 import { Dimensions } from "./Dimensions";
-import { narrativeStyles } from "./narrativeStyles";
 import { codeVisualStyles } from "./codeVisualStyles";
 import { CodeVisual, ImageVisual } from "./slide-types";
 import { Dictionary } from "./Dictionary";
 import { getHighlightedCode } from "./getHighlightedCode";
+import { AppOptions } from "./App";
+
+export function narrativeStyles(viewportDimensions: Dimensions, options: AppOptions): Dictionary<string> {
+  // eslint-disable-next-line
+  const [_, narrativeWidthPercent] = getWidthPercentages(options);
+  const narrativeWidth = viewportDimensions.width * narrativeWidthPercent;
+  return {
+    fontFamily: "Georgia",
+    width: narrativeWidth + 'px',
+    fontSize: "1.6em",
+    lineHeight: "1.8em",
+    padding: "1em"
+  };
+}
+
+export function getWidthPercentages(options: AppOptions) {
+  const ratio = options.widthRatio;
+  const sum = ratio[0] + ratio[1];
+  return [
+    ratio[1] / sum,
+    ratio[0] / sum
+  ];
+}
 
 export function getCurrentSlideIdx(scrollTop: number, slides: SlideViewModel[]): number {
     let heightOffset = 0;
@@ -22,12 +44,14 @@ export function getCurrentSlideIdx(scrollTop: number, slides: SlideViewModel[]):
 
 export function renderNarration(
     slide: StandAloneSlideViewModel,
-    viewportDimensions: Dimensions) {
+    viewportDimensions: Dimensions,
+    options: AppOptions
+) {
     return (
         <div
         className="narration"
         style={{
-            ...narrativeStyles(viewportDimensions),
+            ...narrativeStyles(viewportDimensions, options),
             height: slide.slideHeight + 'px'
         }}
         dangerouslySetInnerHTML={{ __html: slide.html }}>
@@ -38,11 +62,13 @@ export function renderNarration(
 export function renderCurrentVisualSlideUp(
     slide: StandAloneSlideViewModel,
     internalScrollTop: number,
-    viewportDimensions: Dimensions
+    viewportDimensions: Dimensions,
+    options: AppOptions
 ) {
-    const containerWidth = viewportDimensions.width * 0.6;
+    const [visualWidthPercentage, narrationWidthPercentage] = getWidthPercentages(options);
+    const containerWidth = viewportDimensions.width * visualWidthPercentage;
     const containerHeight = viewportDimensions.height;
-    const narrativeWidth = viewportDimensions.width * 0.4;
+    const narrativeWidth = viewportDimensions.width * narrationWidthPercentage;
     const scalingFactor = getScalingFactor(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
@@ -72,7 +98,7 @@ export function renderCurrentVisualSlideUp(
             style={{
                 width: visualWidth + 'px',
                 position: 'fixed',
-                left: narrativeWidth + 'px',
+                left: (narrativeWidth + (containerWidth - visualWidth) / 2) + 'px',
                 top: Math.min(-visualOverflow, topVisualGap),
                 display: "inherit",
                 height: visualHeight
@@ -85,12 +111,13 @@ export function renderCurrentVisualSlideUp(
 export function renderNextVisualSlideUp(
     slide: StandAloneSlideViewModel,
     internalScrollTop: number,
-    viewportDimensions: Dimensions
+    viewportDimensions: Dimensions,
+    options: AppOptions
 ) {
-
-    const containerWidth = viewportDimensions.width * 0.6;
+    const [visualWidthPercentage, narrationWidthPercentage] = getWidthPercentages(options);
+    const containerWidth = viewportDimensions.width * visualWidthPercentage;
     const containerHeight = viewportDimensions.height;
-    const narrativeWidth = viewportDimensions.width * 0.4;
+    const narrativeWidth = viewportDimensions.width * narrationWidthPercentage;
     const scalingFactor = getScalingFactor(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
@@ -119,7 +146,7 @@ export function renderNextVisualSlideUp(
             style={{
                 width: visualWidth + 'px',
                 position: 'fixed',
-                left: narrativeWidth + 'px',
+                left: (narrativeWidth + (containerWidth - visualWidth) / 2) + 'px',
                 top: -internalScrollTop + topVisualGap,
                 display: revealAmount > 0 ? "inherit": "none",
                 height: visualHeight
@@ -132,9 +159,11 @@ export function renderNextVisualSlideUp(
 export function renderCurrentVisualSwipeUp(
     slide: StandAloneSlideViewModel,
     internalScrollTop: number,
-    viewportDimensions: Dimensions
+    viewportDimensions: Dimensions,
+    options: AppOptions
 ) {
-    const containerWidth = viewportDimensions.width * 0.6;
+    const [visualWidthPercentage, narrationWidthPercentage] = getWidthPercentages(options);
+    const containerWidth = viewportDimensions.width * visualWidthPercentage;
     const containerHeight = viewportDimensions.height;
     const scalingFactor = getScalingFactor(
         slide.visualDimensions.width,
@@ -144,7 +173,7 @@ export function renderCurrentVisualSwipeUp(
     );
     const visualWidth = slide.visualDimensions.width * scalingFactor;
     const visualHeight = slide.visualDimensions.height * scalingFactor;
-    const narrativeWidth = viewportDimensions.width * 0.4;
+    const narrativeWidth = viewportDimensions.width * narrationWidthPercentage;
     const topVisualGap = (viewportDimensions.height - visualHeight) / 2;
     const visualOverflow = internalScrollTop + visualHeight + topVisualGap - slide.slideHeight + 2;
 
@@ -166,7 +195,7 @@ export function renderCurrentVisualSwipeUp(
             style={{
                 width: visualWidth + 'px',
                 position: 'fixed',
-                left: narrativeWidth + 'px',
+                left: (narrativeWidth + (containerWidth - visualWidth) / 2) + 'px',
                 top: (topVisualGap) + 'px',
                 display: visualHeight - visualOverflow > 0 ? "inherit" : "none",
                 overflow: 'hidden',
@@ -180,11 +209,13 @@ export function renderCurrentVisualSwipeUp(
 export function renderNextVisualSwipeUp(
     slide: StandAloneSlideViewModel,
     internalScrollTop: number,
-    viewportDimensions: Dimensions
+    viewportDimensions: Dimensions,
+    options: AppOptions
 ) {
-    const containerWidth = viewportDimensions.width * 0.6;
+    const [visualWidthPercentage, narrationWidthPercentage] = getWidthPercentages(options);
+    const containerWidth = viewportDimensions.width * visualWidthPercentage;
     const containerHeight = viewportDimensions.height;
-    const narrativeWidth = viewportDimensions.width * 0.4;
+    const narrativeWidth = viewportDimensions.width * narrationWidthPercentage;
     const scalingFactor = getScalingFactor(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
@@ -222,7 +253,7 @@ export function renderNextVisualSwipeUp(
             style={{
                 width: visualWidth + 'px',
                 position: 'fixed',
-                left: narrativeWidth + 'px',
+                left: (narrativeWidth + (containerWidth - visualWidth) / 2) + 'px',
                 top: topVisualGap + visualHeight - revealAmount,
                 display: revealAmount > 0 ? "inherit" : "none",
                 height: revealAmount,

@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+}
+
+code {
+    background-color: #ddd;
+    padding: 0.1em 0.2em;
+    font-family: Inconsolata, Monaco, monospace;
+}
+/*
+.visual {
+    padding: 10px;
+    border: 16px groove #1C6EA4;
+    border-radius: 25px;
+}
+*/
