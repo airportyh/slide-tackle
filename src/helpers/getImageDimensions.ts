@@ -1,4 +1,4 @@
-import { Dimensions } from "./Dimensions";
+import { Dimensions } from "../types/Dimensions";
 
 export function untilImageLoads(image: HTMLImageElement): Promise<void> {
     return new Promise((accept, reject) => {

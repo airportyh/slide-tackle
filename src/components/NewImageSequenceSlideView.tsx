@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import { SequenceSlideViewModel } from "./slide-view-model-types";
-import { Dimensions } from "./Dimensions";
+import { SequenceSlideViewModel } from "../types/slide-view-model-types";
+import { Dimensions } from "../types/Dimensions";
 import { renderNarration, getCurrentSlideIdx,
     renderCurrentVisualSlideUp, renderNextVisualSlideUp,
-    renderCurrentVisualSwipeUp, renderNextVisualSwipeUp } from "./render-helpers";
+    renderCurrentVisualSwipeUp, renderNextVisualSwipeUp } from "../helpers/render-helpers";
 import { AppOptions } from "./App";
 
 type SequenceSlideViewProps = {

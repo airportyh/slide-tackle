@@ -1,5 +1,5 @@
-import { Dimensions } from "./Dimensions";
-import { Dictionary } from "./Dictionary";
+import { Dimensions } from "../types/Dimensions";
+import { Dictionary } from "../types/Dictionary";
 
 export async function getRenderedHtmlDimensions(html: string, css: Dictionary<string>): Promise<Dimensions> {
     let element = document.createElement("div");

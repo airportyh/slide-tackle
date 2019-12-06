@@ -1,7 +1,7 @@
 import { sleep } from "simple-sleep";
 import { useEffect } from "react";
-import { SlideViewModel } from "./slide-view-model-types";
-import { getCurrentSlideIdx } from "./render-helpers";
+import { SlideViewModel } from "../types/slide-view-model-types";
+import { getCurrentSlideIdx } from "../helpers/render-helpers";
 
 export function usePageKeys(slides: SlideViewModel[]) {
   

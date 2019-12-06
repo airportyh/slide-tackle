@@ -1,11 +1,11 @@
 import React from "react";
-import { SlideViewModel, StandAloneSlideViewModel } from "./slide-view-model-types";
-import { Dimensions } from "./Dimensions";
+import { SlideViewModel, StandAloneSlideViewModel } from "../types/slide-view-model-types";
+import { Dimensions } from "../types/Dimensions";
 import { codeVisualStyles } from "./codeVisualStyles";
-import { CodeVisual, ImageVisual } from "./slide-types";
-import { Dictionary } from "./Dictionary";
+import { CodeVisual, ImageVisual } from "../types/slide-types";
+import { Dictionary } from "../types/Dictionary";
 import { getHighlightedCode } from "./getHighlightedCode";
-import { AppOptions } from "./App";
+import { AppOptions } from "../components/App";
 
 export function narrativeStyles(viewportDimensions: Dimensions, options: AppOptions): Dictionary<string> {
   // eslint-disable-next-line

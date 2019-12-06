@@ -1,17 +1,17 @@
-import { SlideViewModel, StandAloneSlideViewModel } from "./slide-view-model-types";
-import { StandAloneSlide, Slide, Visual } from "./slide-types";
+import { SlideViewModel, StandAloneSlideViewModel } from "../types/slide-view-model-types";
+import { StandAloneSlide, Slide, Visual } from "../types/slide-types";
 import { useViewportDimenions } from "./useViewportDimensions";
 import { useState, useEffect } from "react";
-import { Dimensions } from "./Dimensions";
+import { Dimensions } from "../types/Dimensions";
 import * as _ from "lodash";
-import { getRenderedHtmlDimensions } from "./getRenderedHtmlDimensions";
+import { getRenderedHtmlDimensions } from "../helpers/getRenderedHtmlDimensions";
 import MarkdownIt from "markdown-it";
-import { narrativeStyles } from "./render-helpers";
-import { getImageDimensions } from "./getImageDimensions";
-import { codeVisualStyles } from "./codeVisualStyles";
-import { getHighlightedCode } from "./getHighlightedCode";
+import { narrativeStyles } from "../helpers/render-helpers";
+import { getImageDimensions } from "../helpers/getImageDimensions";
+import { codeVisualStyles } from "../helpers/codeVisualStyles";
+import { getHighlightedCode } from "../helpers/getHighlightedCode";
 import yaml from "js-yaml";
-import { AppOptions } from "./App";
+import { AppOptions } from "../components/App";
 const markdown = new MarkdownIt();
 
 type UseSlideViewModelsState = {

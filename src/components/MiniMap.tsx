@@ -1,5 +1,5 @@
-import { SlideViewModel, StandAloneSlideViewModel } from "./slide-view-model-types";
-import { Dimensions } from "./Dimensions";
+import { SlideViewModel, StandAloneSlideViewModel } from "../types/slide-view-model-types";
+import { Dimensions } from "../types/Dimensions";
 import React, { Fragment } from "react";
 
 export type MiniMapProps = {

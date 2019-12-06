@@ -1,5 +1,5 @@
 import highlightjs from "highlight.js";
-import { CodeVisual } from "./slide-types";
+import { CodeVisual } from "../types/slide-types";
 
 export function getHighlightedCode(visual: CodeVisual): string {
     let code = document.createElement('code');

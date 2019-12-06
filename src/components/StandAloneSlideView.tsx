@@ -1,7 +1,7 @@
 import React from "react";
-import { StandAloneSlideViewModel } from "./slide-view-model-types";
-import { renderNarration, renderCurrentVisualSlideUp, renderNextVisualSlideUp } from "./render-helpers";
-import { Dimensions } from "./Dimensions";
+import { StandAloneSlideViewModel } from "../types/slide-view-model-types";
+import { renderNarration, renderCurrentVisualSlideUp, renderNextVisualSlideUp } from "../helpers/render-helpers";
+import { Dimensions } from "../types/Dimensions";
 import { AppOptions } from "./App";
 
 type StandAloneSlideViewProps = {

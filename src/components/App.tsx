@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import 'highlight.js/styles/github.css';
-import { useViewportDimenions } from './useViewportDimensions';
-import { useScrollTop } from './useScrollTop';
-import { useSlideViewModels } from "./useSlideViewModels";
+import { useViewportDimenions } from '../hooks/useViewportDimensions';
+import { useScrollTop } from '../hooks/useScrollTop';
+import { useSlideViewModels } from "../hooks/useSlideViewModels";
 import { SequenceSlideView } from "./NewImageSequenceSlideView";
 import { StandAloneSlideView } from "./StandAloneSlideView";
-import { getCurrentSlideIdx } from "./render-helpers";
-import { useInitializeRouting } from './useInitializeRouting';
-import { usePageKeys } from './usePageKeys';
+import { getCurrentSlideIdx } from "../helpers/render-helpers";
+import { useInitializeRouting } from '../hooks/useInitializeRouting';
+import { usePageKeys } from '../hooks/usePageKeys';
 
 export interface AppOptions {
   widthRatio: [number, number],

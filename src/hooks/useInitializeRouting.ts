@@ -1,6 +1,6 @@
-import { Dimensions } from "./Dimensions";
+import { Dimensions } from "../types/Dimensions";
 import { useState, useEffect } from "react";
-import { SlideViewModel } from "./slide-view-model-types";
+import { SlideViewModel } from "../types/slide-view-model-types";
 
 function getInitialSlideIndex() {
     const hash = window.location.hash.substring(1);

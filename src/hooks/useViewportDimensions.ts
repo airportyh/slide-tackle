@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Dimensions } from "./Dimensions";
+import { Dimensions } from "../types/Dimensions";
 
 export function useViewportDimenions() {
     const [viewpointDimensions, setViewportDimensions] = useState<Dimensions>({
