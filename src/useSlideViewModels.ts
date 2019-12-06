@@ -12,7 +12,6 @@ import { codeVisualStyles } from "./codeVisualStyles";
 import { getHighlightedCode } from "./getHighlightedCode";
 import yaml from "js-yaml";
 import { AppOptions } from "./App";
-import { sleep } from "simple-sleep";
 const markdown = new MarkdownIt();
 
 type UseSlideViewModelsState = {

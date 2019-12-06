@@ -31,6 +31,7 @@ const App: React.FC = () => {
           height: '1000000000px'
         }}>
         <img
+          alt="loading"
           src="images/loading-pong.gif"
           style={{
             transform: "translateY(-50%) translateX(-50%)",
