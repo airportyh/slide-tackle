@@ -21,8 +21,7 @@ export function useInitializeRouting(viewportDimensions: Dimensions, slides: Sli
          for (let i = 0; i < initSlideIdx; i++) {
              heightOffset += slides[i].slideHeight;
          }
-         console.log("scrollTo", initSlideIdx, heightOffset);
-         window.scrollTo(0, heightOffset);
+         window.scrollTo(0, heightOffset + 1);
          setInitialized(true);
      }
    }, [slides, initialized]);

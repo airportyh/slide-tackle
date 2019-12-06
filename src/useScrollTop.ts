@@ -12,7 +12,7 @@ export function useScrollTop() {
       return () => {
         window.removeEventListener("scroll", scrollListener);
       };
-    });
+    }, []);
   
     return scrollTop;
   }

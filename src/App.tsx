@@ -7,6 +7,7 @@ import { SequenceSlideView } from "./NewImageSequenceSlideView";
 import { StandAloneSlideView } from "./StandAloneSlideView";
 import { getCurrentSlideIdx } from "./render-helpers";
 import { useInitializeRouting } from './useInitializeRouting';
+import { usePageKeys } from './usePageKeys';
 
 export interface AppOptions {
   widthRatio: [number, number],
@@ -14,19 +15,22 @@ export interface AppOptions {
 }
 
 const App: React.FC = () => {
+
   const scrollTop = useScrollTop();
   const viewportDimensions = useViewportDimenions();
   const slideModelState = useSlideViewModels();
   const slides = slideModelState.viewModels;
   const options = slideModelState.appOptions;
   const initialized = useInitializeRouting(viewportDimensions, slides);
+  usePageKeys(slides);
 
   if (slides.length === 0) {
       return <div style={{ textAlign: "center" }}><img alt="Loading..." src="images/loading.gif"/></div>;
   }
 
-  const content: JSX.Element[] = [];
   const currentSlideIdx = getCurrentSlideIdx(scrollTop, slides);
+  const content: JSX.Element[] = [];
+
   if (initialized) {
       if (window.location.hash !== String(currentSlideIdx)) {
           window.location.hash = "#" + currentSlideIdx;
@@ -67,6 +71,7 @@ const App: React.FC = () => {
   return (
     <Fragment>
       {content}
+      <div className="padding" style={{ height: '1px' }}/>
     </Fragment>
   );
 }
