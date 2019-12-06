@@ -7,6 +7,8 @@ import { Dictionary } from "./Dictionary";
 import { getHighlightedCode } from "./getHighlightedCode";
 import { AppOptions } from "./App";
 
+const visualPadding = 20;
+
 export function narrativeStyles(viewportDimensions: Dimensions, options: AppOptions): Dictionary<string> {
   // eslint-disable-next-line
   const [_, narrativeWidthPercent] = getWidthPercentages(options);
@@ -73,7 +75,9 @@ export function renderCurrentVisualSlideUp(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
         containerWidth,
-        containerHeight
+        containerHeight,
+        visualPadding,
+        visualPadding
     );
     const visualHeight = slide.visualDimensions.height * scalingFactor;
     const visualWidth = slide.visualDimensions.width * scalingFactor;
@@ -122,7 +126,9 @@ export function renderNextVisualSlideUp(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
         containerWidth,
-        containerHeight
+        containerHeight,
+        visualPadding,
+        visualPadding
     );
     const visualHeight = slide.visualDimensions.height * scalingFactor;
     const visualWidth = slide.visualDimensions.width * scalingFactor;
@@ -169,7 +175,9 @@ export function renderCurrentVisualSwipeUp(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
         containerWidth,
-        containerHeight
+        containerHeight,
+        visualPadding,
+        visualPadding
     );
     const visualWidth = slide.visualDimensions.width * scalingFactor;
     const visualHeight = slide.visualDimensions.height * scalingFactor;
@@ -220,7 +228,9 @@ export function renderNextVisualSwipeUp(
         slide.visualDimensions.width,
         slide.visualDimensions.height,
         containerWidth,
-        containerHeight
+        containerHeight,
+        visualPadding,
+        visualPadding
     );
     const visualWidth = slide.visualDimensions.width * scalingFactor;
     const visualHeight = slide.visualDimensions.height * scalingFactor;
@@ -295,9 +305,15 @@ function renderHighlightedCode(
     </div>;
 }
 
-function getScalingFactor(width: number, height: number, targetWidth: number, targetHeight: number): number {
-    const scalingFactorW = targetWidth / width;
-    const scalingFactorH = targetHeight / height;
+function getScalingFactor(
+    width: number, 
+    height: number, 
+    targetWidth: number, 
+    targetHeight: number,
+    horizontalPadding: number,
+    verticalPadding: number): number {
+    const scalingFactorW = (targetWidth - 2 * horizontalPadding) / width;
+    const scalingFactorH = (targetHeight - 2 * verticalPadding) / height;
     if (scalingFactorW > scalingFactorH) {
         return scalingFactorH;
     } else {
