@@ -4,16 +4,18 @@ SlideTackle is a tool for writers to write in a visual-oriented blog format.
 
 ## Todo
 
-* a different loading image
-* format for phone
 * prep for deploy in subdirectory
 * flesh out the instructions
+
+* format for phone
+
 
 * allow putting visuals on the left
 * make visual rendering work better with custom borders
 * detect problems with slide and display helpful error
 * polish style
 
+* a different loading image (done)
 * add page down support (done)
 * fix new routing bug (done)
 * make visual padding a configuration (done)

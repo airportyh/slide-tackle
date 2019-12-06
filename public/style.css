@@ -6,7 +6,10 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #fff;
+}
+
+.loading-background {
+    background-color: #181818;
 }
 
 code {

@@ -25,7 +25,20 @@ const App: React.FC = () => {
   usePageKeys(slides);
 
   if (slides.length === 0) {
-      return <div style={{ textAlign: "center" }}><img alt="Loading..." src="images/loading.gif"/></div>;
+      return <div
+        className="loading-background"
+        style={{
+          height: '1000000000px'
+        }}>
+        <img
+          src="images/loading-pong.gif"
+          style={{
+            transform: "translateY(-50%) translateX(-50%)",
+            top: "50%",
+            left: "50%",
+            position: "absolute"
+          }}/>
+      </div>;
   }
 
   const currentSlideIdx = getCurrentSlideIdx(scrollTop, slides);
