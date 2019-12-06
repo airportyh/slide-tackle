@@ -7,8 +7,6 @@ import { Dictionary } from "./Dictionary";
 import { getHighlightedCode } from "./getHighlightedCode";
 import { AppOptions } from "./App";
 
-const visualPadding = 20;
-
 export function narrativeStyles(viewportDimensions: Dimensions, options: AppOptions): Dictionary<string> {
   // eslint-disable-next-line
   const [_, narrativeWidthPercent] = getWidthPercentages(options);
@@ -76,8 +74,7 @@ export function renderCurrentVisualSlideUp(
         slide.visualDimensions.height,
         containerWidth,
         containerHeight,
-        visualPadding,
-        visualPadding
+        options.visualPadding
     );
     const visualHeight = slide.visualDimensions.height * scalingFactor;
     const visualWidth = slide.visualDimensions.width * scalingFactor;
@@ -127,8 +124,7 @@ export function renderNextVisualSlideUp(
         slide.visualDimensions.height,
         containerWidth,
         containerHeight,
-        visualPadding,
-        visualPadding
+        options.visualPadding
     );
     const visualHeight = slide.visualDimensions.height * scalingFactor;
     const visualWidth = slide.visualDimensions.width * scalingFactor;
@@ -176,8 +172,7 @@ export function renderCurrentVisualSwipeUp(
         slide.visualDimensions.height,
         containerWidth,
         containerHeight,
-        visualPadding,
-        visualPadding
+        options.visualPadding
     );
     const visualWidth = slide.visualDimensions.width * scalingFactor;
     const visualHeight = slide.visualDimensions.height * scalingFactor;
@@ -229,8 +224,7 @@ export function renderNextVisualSwipeUp(
         slide.visualDimensions.height,
         containerWidth,
         containerHeight,
-        visualPadding,
-        visualPadding
+        options.visualPadding
     );
     const visualWidth = slide.visualDimensions.width * scalingFactor;
     const visualHeight = slide.visualDimensions.height * scalingFactor;
@@ -310,10 +304,9 @@ function getScalingFactor(
     height: number, 
     targetWidth: number, 
     targetHeight: number,
-    horizontalPadding: number,
-    verticalPadding: number): number {
-    const scalingFactorW = (targetWidth - 2 * horizontalPadding) / width;
-    const scalingFactorH = (targetHeight - 2 * verticalPadding) / height;
+    padding: [number, number]): number {
+    const scalingFactorW = (targetWidth - 2 * padding[0]) / width;
+    const scalingFactorH = (targetHeight - 2 * padding[1]) / height;
     if (scalingFactorW > scalingFactorH) {
         return scalingFactorH;
     } else {

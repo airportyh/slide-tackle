@@ -52,6 +52,7 @@ function compileSlides(yamlContents: string) {
     return {
         title: title,
         widthRatio: object.width_ratio || [50, 50],
+        visualPadding: object.visual_padding || [10, 10],
         slides: slides
     };
 }
@@ -86,7 +87,8 @@ export function useSlideViewModels(): UseSlideViewModelsState {
     const [state, setState] = useState<UseSlideViewModelsState>({
         viewModels: [],
         appOptions: {
-          widthRatio: [50, 50]
+          widthRatio: [50, 50],
+          visualPadding: [10, 10]
         },
         viewportDimensions: { width: -1, height: -1 }
     });
@@ -108,7 +110,8 @@ export function useSlideViewModels(): UseSlideViewModelsState {
     useEffect(() => {
         if (baseSlides && !_.isEqual(state.viewportDimensions, viewportDimensions)) {
             const appOptions = {
-              widthRatio: baseSlides.widthRatio
+              widthRatio: baseSlides.widthRatio,
+              visualPadding: baseSlides.visualPadding
             };
             calculateSlideViews(baseSlides.slides, viewportDimensions, appOptions)
             .then((viewModels) => {

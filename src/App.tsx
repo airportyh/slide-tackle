@@ -9,7 +9,8 @@ import { getCurrentSlideIdx } from "./render-helpers";
 import { useInitializeRouting } from './useInitializeRouting';
 
 export interface AppOptions {
-  widthRatio: [number, number]
+  widthRatio: [number, number],
+  visualPadding: [number, number]
 }
 
 const App: React.FC = () => {

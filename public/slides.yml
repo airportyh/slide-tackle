@@ -1,5 +1,6 @@
 presentation: "Your Presentation Title"
-width_ratio: [50, 50]
+width_ratio: [30, 70]
+visual_padding: [10, 10]
 slides:
     -
         image: "![SlideTackle](images/SlideTackle.png)"
