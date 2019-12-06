@@ -1,5 +1,5 @@
 {
-  "name": "react-version",
+  "name": "slide-tackle",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "PUBLIC_URL=http://three-little-pigs.surge.sh react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "publish": "rm -fr build; npm run build; surge build three-little-pigs.surge.sh"
@@ -42,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "/"
 }
